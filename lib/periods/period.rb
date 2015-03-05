@@ -30,6 +30,14 @@ module Periods
         end
       end
 
+      def next
+        self.class.new(start_date + days, end_date + days)
+      end
+
+      def previous
+        self.class.new(start_date - days, end_date - days)
+      end
+
       def days
         end_date.yday - start_date.yday + 1
       end
