@@ -1,5 +1,7 @@
 # Periods
 
+**This is work in progress**
+
 Simple period types like Period, WeeklyPeriod, Week, Monthly, Quarter, Halfyear, Year.
 
 ## TODO
@@ -23,10 +25,29 @@ Or install it yourself as:
 
 ## Usage
 
+Include `models` part of the gem in your app:
+
+    require 'periods/models'
+
+Include the `modules` part in case of name clashes (see below):
+
+    require 'periods/modules'
+
+### Period
+
 A period is defined by a start and end date.
 
     period = Period.for('25.06.2015', '19.08.2015')
     period.next # => 20.08.2015 - 14.10.2015
+
+All models respond to the following API:
+
+    * next
+    * previous
+    * days
+    * include?
+    * comparing (==, >=, >, <=, <)
+    * ...
 
 ### MonthlyPeriod
 
@@ -52,6 +73,8 @@ If you need a calendar month starting at first day of month and ending at last d
 
 In case constants like `Month` already exist in your code you can write your own custom classes
 by including the appropriate module:
+
+    require 'periods/modules'
 
     class MyMonth
       include Periods::Month

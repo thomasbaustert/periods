@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Periods::VERSION
   spec.authors       = ["Thomas Baustert"]
   spec.email         = ["business@thomasbaustert.de"]
-  spec.summary       = %q{Simple period types include Week, Month, Quarter, Halfyear, Year.}
-  spec.description   = %q{Simple period types include Week, Month, Quarter, Halfyear, Year.}
+  spec.summary       = %q{Simple period types like Week, Month, Quarter, Halfyear, Year.}
+  spec.description   = %q{Simple period types like Week, Month, Quarter, Halfyear, Year.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
