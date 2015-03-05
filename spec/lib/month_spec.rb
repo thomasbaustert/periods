@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe Month do
 
+  let(:subject) { described_class.for("1.1.2015") }
+
+  it_behaves_like "Lint Check"
+
   describe ".for" do
     it "returns month of given date included" do
       month = described_class.for('25.06.2015')
