@@ -8,10 +8,7 @@ require "active_support/core_ext/date_time/calculations"
 require "active_support/core_ext/integer/time"
 
 require "periods/version"
-require "period"
-require "monthly_period"
-require "month"
-#require "periods/month"
+require "periods/models"
 
 module Periods
   # Your code goes here...
