@@ -69,6 +69,14 @@ If you need a calendar month starting at first day of month and ending at last d
     june = MonthPeriod.for('25.06.2015') # => 01.06.2015 - 30.06.2015
     period.next # => 01.07.2015 - 31.07.2015
 
+### Month names
+
+Month names like `January`, `February`, ... are provided:
+
+    january = January.of(2015) # => Month.for('1.1.2015)
+    january.next # => January.of(2016)
+    ...
+
 ### If constants already exist
 
 In case constants like `Month` already exist in your code you can write your own custom classes
