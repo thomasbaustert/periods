@@ -8,6 +8,7 @@ Simple period types like Period, WeeklyPeriod, Week, Monthly, Quarter, Halfyear,
 
   * Use Time not Date?
   * Remove dependency to ActiveSupport
+  * month.include?(day), quarter.include?(day), quarter.include?(month)
 
 ## Installation
 
@@ -38,7 +39,9 @@ Include the `modules` part in case of name clashes (see below):
 A period is defined by a start and end date.
 
     period = Period.for('25.06.2015', '19.08.2015')
-    period.next # => 20.08.2015 - 14.10.2015
+    period.days      # => 56
+    period.next      # => 20.08.2015 - 14.10.2015
+    period.next.days # => 56
 
 All models respond to the following API:
 
@@ -54,20 +57,20 @@ All models respond to the following API:
 If you need a constant monthly range use `MonthlyPeriod`:
 
     monthly = MonthPeriod.for('01.01.2015') # => 01.01.2015 - 31.01.2015
-    period.next # => 01.02.2015 - 28.02.2015
+    monthly.next # => 01.02.2015 - 28.02.2015
 
     monthly = MonthPeriod.for('25.06.2015') # => 25.06.2015 - 24.07.2015
-    period.next # => 25.07.2015 - 24.08.2015
+    monthly.next # => 25.07.2015 - 24.08.2015
 
 ### Month
 
 If you need a calendar month starting at first day of month and ending at last day of month use `Month`:
 
     january = Month.for('01.01.2015') # => 01.01.2015 - 31.01.2015
-    period.next # => 01.02.2015 - 28.02.2015
+    january.next # => 01.02.2015 - 28.02.2015
 
     june = MonthPeriod.for('25.06.2015') # => 01.06.2015 - 30.06.2015
-    period.next # => 01.07.2015 - 31.07.2015
+    january.next # => 01.07.2015 - 31.07.2015
 
 ### Month names
 
