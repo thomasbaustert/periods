@@ -43,6 +43,8 @@ describe Period do
 
   describe "#days" do
     it "returns days of period" do
+      expect(described_class.new("25.06.2015", "19.08.2015").days).to eq 56
+      expect(described_class.new("20.08.2015", "14.10.2015").days).to eq 56
       expect(described_class.new("01.02.2015", "28.02.2015").days).to eq 28
       expect(described_class.new("06.02.2015", "30.04.2015").days).to eq 84
     end
