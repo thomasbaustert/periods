@@ -4,6 +4,5 @@ require "periods/month"
 require "periods/quarterly_period"
 require "periods/quarter"
 require "periods/yearly_period"
-
-
+require "periods/year"
 
