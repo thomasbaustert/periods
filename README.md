@@ -30,14 +30,18 @@ Include the `modules` part in case of name clashes (see below):
 
 ### Period
 
-A period is defined by a start and end date.
+A period is defined by a start and end date:
 
-    period = Period.for('25.06.2015', '19.08.2015')
+    period = Period.for(Date.new(2015,6,25), Date.new(2015,8,19))
     period.days      # => 56
     period.next      # => 20.08.2015 - 14.10.2015
     period.next.days # => 56
 
-All models respond to the following API:
+The start and end date can be a string too:
+
+    period = Period.for('25.06.2015', '19.08.2015')
+
+All period models respond to the following interface:
 
     * next
     * previous
@@ -45,6 +49,8 @@ All models respond to the following API:
     * include?
     * comparing (==, >=, >, <=, <)
     * ...
+
+Special period models may define additional methods (see below).
 
 ### MonthlyPeriod
 
@@ -102,6 +108,11 @@ by including the appropriate module:
     ...
 
 Ruby is cool!
+
+## TODO
+
+* Implement missing period types
+* Comment Code
 
 ## Contributing
 
