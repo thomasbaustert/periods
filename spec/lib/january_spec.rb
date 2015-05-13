@@ -1,4 +1,5 @@
 require 'spec_helper'
+require "january"
 
 # TODO/05.03.15/04:15/tb Experimental
 describe January do

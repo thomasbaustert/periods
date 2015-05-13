@@ -2,5 +2,4 @@ require "periods/modules"
 require "period"
 require "monthly_period"
 require "month"
-
-require "january"
+require "quarterly_period"
