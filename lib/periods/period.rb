@@ -1,5 +1,3 @@
-require 'periods/date_calculator'
-
 module Periods
   module Period
 
@@ -52,16 +50,6 @@ module Periods
       def to_s
         "#{start_date.strftime("%d.%m.%Y")} - #{end_date.strftime("%d.%m.%Y")}"
       end
-
-      private
-
-        def beginning_of_month(date)
-          Periods::DateCalculator.new(date).beginning_of_month
-        end
-
-        def end_of_month(date)
-          Periods::DateCalculator.new(date).end_of_month
-        end
 
     end
   end
