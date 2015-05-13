@@ -1,14 +1,8 @@
 # Periods
 
-**This is work in progress**
+**This is work in progress, no gem released!**
 
 Simple period types like Period, WeeklyPeriod, Week, Monthly, Quarter, Halfyear, Year.
-
-## TODO
-
-  * Use Time not Date?
-  * Remove dependency to ActiveSupport
-  * month.include?(day), quarter.include?(day), quarter.include?(month)
 
 ## Installation
 
@@ -60,8 +54,10 @@ If you need a constant monthly range use `MonthlyPeriod`:
     monthly.next # => 01.02.2015 - 28.02.2015
 
     monthly = MonthPeriod.for('25.06.2015') # => 25.06.2015 - 24.07.2015
-    monthly.next # => 25.07.2015 - 24.08.2015
-
+    monthly.next        # => 25.07.2015 - 24.08.2015
+    monthly.start_date  # Date(25.06.2015)
+    monthly.end_date    # Date(24.07.2015)
+    
 ### Month
 
 If you need a calendar month starting at first day of month and ending at last day of month use `Month`:
@@ -70,15 +66,21 @@ If you need a calendar month starting at first day of month and ending at last d
     january.next # => 01.02.2015 - 28.02.2015
 
     june = MonthPeriod.for('25.06.2015') # => 01.06.2015 - 30.06.2015
-    june.next # => 01.07.2015 - 31.07.2015
+    june.next   # => 01.07.2015 - 31.07.2015
+    june.month  # => 6
+    june.year   # => 2015
 
-### Month names
+### QuarterlyPeriod
 
-Month names like `January`, `February`, ... are provided:
+### Quarter
 
-    january = January.of(2015) # => Month.for('1.1.2015)
-    january.next # => January.of(2016)
-    ...
+### HalfyearlyPeriod
+
+### Halfyear
+
+### Yearly
+
+### Year
 
 ### If constants already exist
 
