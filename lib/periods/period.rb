@@ -1,3 +1,5 @@
+require 'periods/date_calculator'
+
 module Periods
   module Period
 
@@ -54,11 +56,11 @@ module Periods
       private
 
         def beginning_of_month(date)
-          date.beginning_of_month.to_date
+          Periods::DateCalculator.new(date).beginning_of_month
         end
 
         def end_of_month(date)
-          date.end_of_month.to_date
+          Periods::DateCalculator.new(date).end_of_month
         end
 
     end

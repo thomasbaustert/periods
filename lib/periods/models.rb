@@ -1,3 +1,4 @@
+require "periods/date_calculator"
 require "periods/requirements"
 require "periods/modules"
 require "period"
