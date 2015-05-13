@@ -30,6 +30,8 @@ module Periods
         start_date.month
       end
 
+      alias_method :number, :month
+
       def year
         start_date.year
       end

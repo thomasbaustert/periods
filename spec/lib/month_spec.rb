@@ -39,6 +39,14 @@ describe Month do
     end
   end
 
+  describe "#number" do
+    it "returns month number" do
+      expect(described_class.for('01.01.2015').number).to eq  1
+      expect(described_class.for('01.06.2015').number).to eq  6
+      expect(described_class.for('01.12.2015').number).to eq 12
+    end
+  end
+
   describe "#year" do
     it "returns year number" do
       expect(described_class.for('01.01.2015').year).to eq 2015
