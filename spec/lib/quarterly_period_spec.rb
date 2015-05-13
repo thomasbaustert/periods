@@ -31,4 +31,41 @@ describe QuarterlyPeriod do
     end
   end
 
+  describe "#include?" do
+    let(:period) { described_class.for('25.06.2015') }
+
+    context "date included" do
+      it "returns true" do
+        expect(period.include?('25.06.2015')).to be_truthy
+        expect(period.include?('26.06.2015')).to be_truthy
+        expect(period.include?('01.07.2015')).to be_truthy
+        expect(period.include?('01.08.2015')).to be_truthy
+        expect(period.include?('24.09.2015')).to be_truthy
+      end
+    end
+
+    context "date not included" do
+      it "returns false" do
+        expect(period.include?('24.06.2015')).to be_falsey
+        expect(period.include?('25.09.2015')).to be_falsey
+      end
+    end
+
+    context "period included" do
+      it "returns true" do
+        expect(period.include?(Period.new('25.06.2015', '24.09.2015'))).to be_truthy
+        expect(period.include?(Period.new('26.06.2015', '23.09.2015'))).to be_truthy
+        expect(period.include?(Period.new('02.08.2015', '20.08.2015'))).to be_truthy
+        expect(period.include?(Period.new('23.09.2015', '24.09.2015'))).to be_truthy
+      end
+    end
+
+    context "period not included" do
+      it "returns false" do
+        expect(period.include?(Period.new('24.06.2015', '24.09.2015'))).to be_falsey
+        expect(period.include?(Period.new('25.06.2015', '25.09.2015'))).to be_falsey
+        expect(period.include?(Period.new('24.06.2015', '25.09.2015'))).to be_falsey
+      end
+    end
+  end
 end
