@@ -15,7 +15,7 @@ module Periods
       #
       def for(date)
         date = Date.parse(date.to_s)
-        new(date, date + 1.month - 1.day)
+        new(date, date.next_month.prev_day)
       end
     end
 
@@ -24,14 +24,14 @@ module Periods
       # 25.06.2015 => 25.07.2015
       #
       def next
-        self.class.for(start_date + 1.month)
+        self.class.for(start_date.next_month)
       end
 
       ##
       # 25.06.2015 => 25.05.2015
       #
       def previous
-        self.class.for(start_date - 1.month)
+        self.class.for(start_date.prev_month)
       end
 
     end
