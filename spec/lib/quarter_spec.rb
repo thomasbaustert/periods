@@ -92,7 +92,7 @@ describe Quarter do
   end
 
   describe "#months" do
-    it "returns month of quarter" do
+    it "returns months of quarter" do
       expect(described_class.for('01.06.2015').months).
           to eq [Month.for('01.06.2015'), Month.for('01.07.2015'), Month.for('01.08.2015')]
       expect(described_class.for('01.12.2015').months).
