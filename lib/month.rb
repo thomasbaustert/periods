@@ -1,5 +1,5 @@
 ##
-# A month always starting at first day and ending at last day.
+# A month always starts at first day of month and ends at last day of month.
 #
 class Month
   include Periods::Month
