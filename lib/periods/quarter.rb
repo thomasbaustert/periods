@@ -30,6 +30,8 @@ module Periods
         include Periods::Month
       end
 
+      # TODO/13.05.15/05:03/tb ok to return QuarterMonth and not Month?
+      # Same interface but other class. Should be ok for OO.
       def months
         [ QuarterMonth.for(start_date),
           QuarterMonth.for(start_date.next_month),
