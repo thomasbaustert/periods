@@ -7,7 +7,7 @@ describe QuarterlyPeriod do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    it "returns month of given date included" do
+    it "returns quarter of given date included" do
       period = described_class.for('25.06.2015')
 
       expect(period.start_date).to eq date('25.06.2015')
