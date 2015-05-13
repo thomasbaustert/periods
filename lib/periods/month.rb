@@ -5,7 +5,6 @@ module Periods
 
     def self.included(base)
       base.class_eval do
-        include Periods::Period
         include Periods::MonthlyPeriod
         include InstanceMethods
         extend ClassMethods
