@@ -75,4 +75,12 @@ describe Quarter do
       end
     end
   end
+
+  describe "#months" do
+    let(:period) { described_class.for('01.06.2015') }
+
+    it "returns month of quarter" do
+      expect(period.months).to eq [Month.for('01.06.2015'), Month.for('01.07.2015'), Month.for('01.08.2015')]
+    end
+  end
 end

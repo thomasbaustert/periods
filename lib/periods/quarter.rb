@@ -26,6 +26,16 @@ module Periods
         @end_date   = end_of_month(@start_date.next_month(2))
       end
 
+      class QuarterMonth
+        include Periods::Month
+      end
+
+      def months
+        [ QuarterMonth.for(start_date),
+          QuarterMonth.for(start_date.next_month),
+          QuarterMonth.for(start_date.next_month(2)) ]
+      end
+
       private
 
         def beginning_of_month(date)
