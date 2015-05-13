@@ -1,7 +1,7 @@
 ##
-# A monthly period is always one from from starting day.
+# A quarterly period starts one a day X in month and ends on one day before X three months later.
 #
-class MonthlyPeriod
-  include Periods::MonthlyPeriod
+class QuarterlyPeriod
+  include Periods::QuarterlyPeriod
 end
 
