@@ -12,7 +12,7 @@ shared_examples "Lint Check" do
     expect(subject).to respond_to(:days)
   end
 
-  it "respond #:include?" do
+  it "respond #include?" do
     expect(subject).to respond_to(:include?)
   end
 
