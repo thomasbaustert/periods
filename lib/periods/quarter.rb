@@ -36,6 +36,14 @@ module Periods
           QuarterMonth.for(start_date.next_month(2)) ]
       end
 
+      def start_year
+        start_date.year
+      end
+
+      def end_year
+        end_date.year
+      end
+
       private
 
         def beginning_of_month(date)
