@@ -31,6 +31,14 @@ describe QuarterlyPeriod do
     end
   end
 
+  describe "#days" do
+    it "returns days of period" do
+      expect(described_class.for("25.06.2015").days).to eq 92
+      expect(described_class.for("01.01.2015").days).to eq 90
+      expect(described_class.for("01.01.2016").days).to eq 91
+    end
+  end
+
   describe "#include?" do
     let(:period) { described_class.for('25.06.2015') }
 
