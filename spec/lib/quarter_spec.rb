@@ -59,6 +59,21 @@ describe Quarter do
       end
     end
 
+    context "month included" do
+      it "returns true" do
+        expect(period.include?(Month.for('01.06.2015'))).to be_truthy
+        expect(period.include?(Month.for('01.07.2015'))).to be_truthy
+        expect(period.include?(Month.for('01.08.2015'))).to be_truthy
+      end
+    end
+
+    context "month not included" do
+      it "returns false" do
+        expect(period.include?(Month.for('01.05.2015'))).to be_falsey
+        expect(period.include?(Month.for('01.09.2015'))).to be_falsey
+      end
+    end
+
     context "period included" do
       it "returns true" do
         expect(period.include?(Period.new('01.06.2015', '31.08.2015'))).to be_truthy
