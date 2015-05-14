@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thomasbaustert/periods.svg?branch=master)](https://travis-ci.org/thomasbaustert/periods)
+
 # Periods
 
 **This is work in progress, no gem released!**
