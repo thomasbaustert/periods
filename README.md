@@ -2,7 +2,14 @@
 
 **This is work in progress, no gem released!**
 
-Simple period types like Period, WeeklyPeriod, Week, Monthly, Quarter, Halfyear, Year.
+This gem provides period types like 
+
+  * Period, 
+  * WeeklyPeriod, Week, 
+  * MonthlyPeriod, Month, 
+  * QuarterlyPeriod, Quarter,
+  * HalfyearlyPeriod, Halfyear,
+  * YearlyPeriod, Year.
 
 ## Installation
 
