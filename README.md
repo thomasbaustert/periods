@@ -2,8 +2,6 @@
 
 # Periods
 
-**This is work in progress, no gem released!**
-
 This gem provides period types like 
 
   * Period, 
