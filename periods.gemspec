@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["business@thomasbaustert.de"]
   spec.summary       = %q{Simple period types like Week, Month, Quarter, Halfyear, Year.}
   spec.description   = %q{Simple period types like Week, Month, Quarter, Halfyear, Year.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/thomasbaustert/periods"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
