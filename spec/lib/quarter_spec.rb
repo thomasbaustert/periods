@@ -11,8 +11,8 @@ describe Quarter do
     it "returns quarter of given date included" do
       period = described_class.for('25.06.2015')
 
-      expect(period.start_date).to eq date('01.06.2015')
-      expect(period.end_date).to eq date('31.08.2015')
+      expect(period.start_date).to eq Date('01.06.2015')
+      expect(period.end_date).to eq Date('31.08.2015')
     end
   end
 

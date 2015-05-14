@@ -11,8 +11,8 @@ describe YearlyPeriod do
     it "returns year of given date included" do
       period = described_class.for('25.06.2015')
 
-      expect(period.start_date).to eq date('25.06.2015')
-      expect(period.end_date).to eq date('24.06.2016')
+      expect(period.start_date).to eq Date('25.06.2015')
+      expect(period.end_date).to eq Date('24.06.2016')
     end
   end
 

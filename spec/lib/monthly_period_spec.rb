@@ -11,8 +11,8 @@ describe MonthlyPeriod do
     it "returns month of given date included" do
       month = described_class.for('25.06.2015')
 
-      expect(month.start_date).to eq date('25.06.2015')
-      expect(month.end_date).to eq date('24.07.2015')
+      expect(month.start_date).to eq Date('25.06.2015')
+      expect(month.end_date).to eq Date('24.07.2015')
     end
   end
 

@@ -74,6 +74,6 @@ RSpec.configure do |config|
 =end
 end
 
-def date(date)
+def Date(date)
   Date.parse(date.to_s)
 end
