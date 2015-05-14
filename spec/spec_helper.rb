@@ -1,4 +1,3 @@
-require 'periods/models'
 require 'lint_check'
 
 RSpec.configure do |config|

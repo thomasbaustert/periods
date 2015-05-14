@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'periods/constants'
 
 describe Quarter do
 

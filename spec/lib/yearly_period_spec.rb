@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'yearly_period'
+require 'periods/constants'
 
 describe YearlyPeriod do
 

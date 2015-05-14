@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'halfyearly_period'
+require 'periods/constants'
 
 describe HalfyearlyPeriod do
 
