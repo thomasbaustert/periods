@@ -45,7 +45,7 @@ module Periods
 
         def include?(period)
           if period.is_a?(Date)
-            start_date <= date && date <= end_date
+            start_date <= period && period <= end_date
           elsif period.is_a?(String)
             date = Date.parse(period.to_s)
             start_date <= date && date <= end_date

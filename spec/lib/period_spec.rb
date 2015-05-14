@@ -58,12 +58,26 @@ describe Period do
   describe "#include?" do
     context "date included" do
       it "returns true" do
+        expect(new_period("01.02.2015", "28.02.2015").include?(date("01.02.2015"))).to be_truthy
+        expect(new_period("01.02.2015", "28.02.2015").include?(date("28.02.2015"))).to be_truthy
+      end
+    end
+
+    context "date not included" do
+      it "returns false" do
+        expect(new_period("01.02.2015", "28.02.2015").include?(date("31.01.2015"))).to be_falsey
+        expect(new_period("01.02.2015", "28.02.2015").include?(date("01.03.2015"))).to be_falsey
+      end
+    end
+
+    context "date string included" do
+      it "returns true" do
         expect(new_period("01.02.2015", "28.02.2015").include?("01.02.2015")).to be_truthy
         expect(new_period("01.02.2015", "28.02.2015").include?("28.02.2015")).to be_truthy
       end
     end
 
-    context "date not included" do
+    context "date string not included" do
       it "returns false" do
         expect(new_period("01.02.2015", "28.02.2015").include?("31.01.2015")).to be_falsey
         expect(new_period("01.02.2015", "28.02.2015").include?("01.03.2015")).to be_falsey
