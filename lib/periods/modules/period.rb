@@ -43,9 +43,17 @@ module Periods
           end_date.yday - start_date.yday + 1
         end
 
-        def include?(date)
-          date = Date.parse(date.to_s)
-          start_date <= date && date <= end_date
+        def include?(period)
+          if period.is_a?(Date)
+            start_date <= date && date <= end_date
+          elsif period.is_a?(String)
+            date = Date.parse(period.to_s)
+            start_date <= date && date <= end_date
+          elsif period.is_a?(Period)
+            start_date <= period.start_date && period.end_date <= end_date
+          else
+            false
+          end
         end
 
         def to_s

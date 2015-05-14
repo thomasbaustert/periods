@@ -69,6 +69,23 @@ describe Period do
         expect(new_period("01.02.2015", "28.02.2015").include?("01.03.2015")).to be_falsey
       end
     end
+
+    context "period included" do
+      it "returns true" do
+        period = new_period("10.04.2015", "20.05.2015")
+        expect(period.include?(new_period("10.04.2015", "20.05.2015"))).to be_truthy
+        expect(period.include?(new_period("11.04.2015", "20.05.2015"))).to be_truthy
+        expect(period.include?(new_period("10.04.2015", "19.05.2015"))).to be_truthy
+      end
+    end
+
+    context "period not included" do
+      it "returns false" do
+        period = new_period("10.04.2015", "20.05.2015")
+        expect(period.include?(new_period("09.04.2015", "20.05.2015"))).to be_falsey
+        expect(period.include?(new_period("10.04.2015", "21.05.2015"))).to be_falsey
+      end
+    end
   end
 end
 
