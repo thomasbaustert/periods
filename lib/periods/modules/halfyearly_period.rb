@@ -35,16 +35,6 @@ module Periods
           (self.next.start_date - start_date).to_i
         end
 
-        def include?(period)
-          if period.is_a?(String) || period.is_a?(Date)
-            super
-          elsif period.is_a?(Period)
-            start_date <= period.start_date && period.end_date <= end_date
-          else
-            false
-          end
-        end
-
       end
     end
   end
