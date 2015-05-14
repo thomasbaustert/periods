@@ -20,13 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-Include `models` part of the gem in your app:
+Require `periods` in your app:
 
-    require 'periods/models'
-
-Include the `modules` part in case of name clashes (see below):
-
-    require 'periods/modules'
+    require 'periods'
 
 ### Period
 
@@ -90,28 +86,34 @@ If you need a calendar month starting at first day of month and ending at last d
 
 ### If constants already exist
 
-In case constants like `Month` already exist in your code you can write your own custom classes
-by including the appropriate module:
+In case constants like `Month` already exist in your code stop requiring `periods` in your `Gemfile`:
+
+    gem 'periods', require: false
+
+Require the namespaced classes only:
+
+    require 'periods/classes'
+
+Use them like so:
+
+    month = Periods::Month.for('01.08.2015')
+
+Alternatively require the modules only:
 
     require 'periods/modules'
 
+Write your own classes:
+
     class MyMonth
-      include Periods::Month
+      include Periods::Modules::Month
     end
     month = MyMonth.for('01.08.2015')
     ...
 
-    class MyQuarter
-      include Periods::Quarter
-    end
-    quarter = MyQuarter.for('01.01.2015')
-    ...
-
-Ruby is cool!
-
 ## TODO
 
-* Implement missing period types
+* Implement Week
+* Use Time not Date
 * Comment Code
 
 ## Contributing
