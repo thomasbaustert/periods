@@ -43,14 +43,16 @@ The start and end date can be a string too:
 
 All period models respond to the following interface:
 
+    * start_year
+    * end_year
+    * days
     * next
     * previous
-    * days
     * include?
-    * comparing (==, >=, >, <=, <)
-    * ...
+    * Comparable (==, >=, >, <=, <)
+    * to_s
 
-Special period models may define additional methods (see below).
+Special period models may define additional methods like `months` (see below).
 
 #### start_year
 
