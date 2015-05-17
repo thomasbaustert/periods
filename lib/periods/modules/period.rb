@@ -24,11 +24,20 @@ module Periods
         #
         # @example
         #
+        #    period = Period.new(Date.new(2015,4,10), Date.new(2015,5,20))
         #    period = Period.new('10.04.2015', '20.05.2015')
+        #    period = Period.new(Period.new('10.04.2015', '20.05.2015'))
         #
-        def initialize(start_date, end_date)
-          @start_date = Date.parse(start_date.to_s)
-          @end_date = Date.parse(end_date.to_s)
+        def initialize(start_date, end_date = nil)
+          if start_date.is_a?(Period)
+            @start_date = start_date.start_date
+            @end_date = start_date.end_date
+          elsif end_date.nil?
+            raise ArgumentError, "Period is missing end_date, e.g. Period.new(start_date, end_date)."
+          else
+            @start_date = Date.parse(start_date.to_s)
+            @end_date = Date.parse(end_date.to_s)
+          end
         end
 
         ##

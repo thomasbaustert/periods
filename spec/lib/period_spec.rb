@@ -21,6 +21,17 @@ describe Period do
       expect(period.start_date).to eq Date('25.06.2015')
       expect(period.end_date).to eq Date('20.05.2016')
     end
+
+    it "raises error if end date is missing" do
+      expect { described_class.new('25.06.2015', nil) }.to raise_error(ArgumentError)
+    end
+
+    it "accepts Period" do
+      period = described_class.new(Period.new('25.06.2015', '20.05.2016'))
+
+      expect(period.start_date).to eq Date('25.06.2015')
+      expect(period.end_date).to eq Date('20.05.2016')
+    end
   end
 
   describe "==" do
