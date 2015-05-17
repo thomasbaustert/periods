@@ -8,23 +8,23 @@ describe Halfyear do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    it "returns month of given date included" do
-      month = described_class.for('25.06.2015')
+    it "returns halfyear of given date included" do
+      halfyear = described_class.for('25.06.2015')
 
-      expect(month.start_date).to eq Date('01.06.2015')
-      expect(month.end_date).to eq Date('30.11.2015')
+      expect(halfyear.start_date).to eq Date('01.06.2015')
+      expect(halfyear.end_date).to eq Date('30.11.2015')
     end
   end
 
   describe "#next" do
-    it "returns next month" do
+    it "returns next halfyear" do
       expect(described_class.for('25.06.2015').next).to eq described_class.for('01.12.2015')
       expect(described_class.for('01.07.2015').next).to eq described_class.for('01.01.2016')
     end
   end
 
   describe "#previous" do
-    it "returns previous month" do
+    it "returns previous halfyear" do
       expect(described_class.for('25.06.2015').previous).to eq described_class.for('01.12.2014')
       expect(described_class.for('01.07.2015').previous).to eq described_class.for('01.01.2015')
     end

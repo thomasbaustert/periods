@@ -17,14 +17,14 @@ describe YearlyPeriod do
   end
 
   describe "#next" do
-    it "returns next quarter" do
+    it "returns next period" do
       expect(described_class.for('25.06.2015').next).to eq described_class.for('25.06.2016')
       expect(described_class.for('01.07.2015').next).to eq described_class.for('01.07.2016')
     end
   end
 
   describe "#previous" do
-    it "returns previous quarter" do
+    it "returns previous period" do
       expect(described_class.for('25.06.2015').previous).to eq described_class.for('25.06.2014')
       expect(described_class.for('01.07.2015').previous).to eq described_class.for('01.07.2014')
     end
