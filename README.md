@@ -41,6 +41,12 @@ The start and end date can be a string too:
 
     period = Period.new('25.06.2015', '19.08.2015')
 
+For convenience a period can be passed too:
+
+    period = Period.new('25.06.2015', '19.08.2015')
+    ...
+    period2 = Period.new(period)
+
 All period models respond to the following interface:
 
     * start_year
