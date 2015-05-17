@@ -35,14 +35,11 @@ Require `periods` in your app:
 
 A period is defined by a start and end date:
 
-    period = Period.for(Date.new(2015,6,25), Date.new(2015,8,19))
-    period.days      # => 56
-    period.next      # => 20.08.2015 - 14.10.2015
-    period.next.days # => 56
+    period = Period.new(Date.new(2015,6,25), Date.new(2015,8,19))
 
 The start and end date can be a string too:
 
-    period = Period.for('25.06.2015', '19.08.2015')
+    period = Period.new('25.06.2015', '19.08.2015')
 
 All period models respond to the following interface:
 
@@ -55,42 +52,100 @@ All period models respond to the following interface:
 
 Special period models may define additional methods (see below).
 
+#### days
+
+    period = Period.new('25.06.2015', '19.08.2015')
+    period.days # => 56
+
+#### next
+
+    period = Period.new('25.06.2015', '19.08.2015')
+    period.next # => 20.08.2015 - 14.10.2015
+
+#### previous
+
+    period = Period.new('25.06.2015', '19.08.2015')
+    period.previous # => 30.04.2015 - 24.06.2015
+
+#### include?
+
+Test whether a date or a period is included in the given period:
+
+    period = Period.new('25.06.2015', '19.08.2015')
+    period.include?(Date.new(2015,6,25)) # => true
+    period.include?('25.06.2015') # => true
+    period.include?('24.06.2015') # => false
+    
+    period.include?(Period.new('25.06.2015', '19.08.2015')) # => true
+    period.include?(Period.new('26.06.2015', '19.08.2015')) # => true
+    period.include?(Period.new('24.06.2015', '19.08.2015')) # => false
+    period.include?(Period.new('25.06.2015', '20.08.2015')) # => false
+
 ### MonthlyPeriod
 
 If you need a constant monthly range use `MonthlyPeriod`:
 
-    monthly = MonthPeriod.for('01.01.2015') # => 01.01.2015 - 31.01.2015
-    monthly.next # => 01.02.2015 - 28.02.2015
-
     monthly = MonthPeriod.for('25.06.2015') # => 25.06.2015 - 24.07.2015
-    monthly.next        # => 25.07.2015 - 24.08.2015
-    monthly.start_date  # Date(25.06.2015)
-    monthly.end_date    # Date(24.07.2015)
-    
+    monthly.next     # => 25.07.2015 - 24.08.2015
+    monthly.previous # => 25.05.2015 - 24.06.2015
+
 ### Month
 
 If you need a calendar month starting at first day of month and ending at last day of month use `Month`:
 
-    january = Month.for('01.01.2015') # => 01.01.2015 - 31.01.2015
-    january.next # => 01.02.2015 - 28.02.2015
-
     june = MonthPeriod.for('25.06.2015') # => 01.06.2015 - 30.06.2015
-    june.next   # => 01.07.2015 - 31.07.2015
-    june.month  # => 6
-    june.year   # => 2015
+    june.next     # => 01.07.2015 - 31.07.2015
+    june.previous # => 01.05.2015 - 31.05.2015
+    june.month    # => 6
+    june.year     # => 2015
 
 ### QuarterlyPeriod
 
+    period = QuarterlyPeriod.for('25.06.2015') # => 25.06.2015 - 24.09.2015
+
 ### Quarter
+
+A quarter starts at first day of a month and ends at last day three months later:
+
+    quarter = Quarter.for('01.02.2015') # => 01.02.2015 - 30.04.2015
+    quarter.next     # => 01.05.2015 - 31.07.2015
+    quarter.previous # => 01.11.2014 - 31.01.2015
+    
+    quarter = Quarter.for('01.12.2015') # => 01.12.2015 - 29.02.2016
+    quarter.start_year # => 2015
+    quarter.end_year   # => 2016
+    quarter.months     # => [Month.for('01.12.2015'), Month.for('01.01.2016'), Month.for('01.02.2016')]
 
 ### HalfyearlyPeriod
 
+A HalfyearlyPeriod starts at the given date and ends six month later:
+
+    period = HalfyearlyPeriod.for('25.06.2015') # =>  25.06.2015 - 24.12.2015
+
 ### Halfyear
 
-### Yearly
+A Halfyear starts at the first day of a month and ends six month later:
+
+    halfyear = HalfyearlyPeriod.for('25.06.2015') # =>  01.06.2015 - 30.11.2015
+    halfyear.next       # => 25.12.2015 - 24.06.2016
+    halfyear.previous   # => 25.12.2014 - 24.06.2015
+    halfyear.months     # => [Month.for('01.06.2015'), ..., Month.for('01.11.2015')]
+
+### YearlyPeriod
+
+A YearlyPeriod starts at the given date and ends one year later:
+
+    period = YearlyPeriod.for('25.06.2015') # => 25.06.2015 - 24.06.2016
 
 ### Year
 
+A year starts at first day of a month and ends one year later:
+
+    year = Year.for('01.02.2015') # => 01.02.2015 - 31.01.2016
+    year.next       # => 01.02.2016 - 31.01.2017
+    year.previous   # => 01.02.2014 - 31.01.2015
+    year.months     # => [Month.for('01.02.2015'), ..., Month.for('01.01.2016')]
+    
 ### If constants already exist
 
 In case constants like `Month` already exist in your code stop requiring `periods` in your `Gemfile`:
@@ -121,6 +176,7 @@ Write your own classes:
 
 * Implement Week
 * Use Time not Date
+* Optimize README
 * Comment Code
 
 ## Contributing
