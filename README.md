@@ -101,11 +101,13 @@ If you need a calendar month starting at first day of month and ending at last d
 
 ### QuarterlyPeriod
 
+A QuarterlyPeriod starts at given date and ends at last day three months later:
+
     period = QuarterlyPeriod.for('25.06.2015') # => 25.06.2015 - 24.09.2015
 
 ### Quarter
 
-A quarter starts at first day of a month and ends at last day three months later:
+A Quarter starts at first day of a month and ends at last day three months later:
 
     quarter = Quarter.for('01.02.2015') # => 01.02.2015 - 30.04.2015
     quarter.next     # => 01.05.2015 - 31.07.2015
