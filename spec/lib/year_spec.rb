@@ -8,33 +8,25 @@ describe Year do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    it "returns month of given date included" do
-      month = described_class.for('25.06.2015')
+    it "returns year of given date included" do
+      year = described_class.for('25.06.2015')
 
-      expect(month.start_date).to eq Date('01.06.2015')
-      expect(month.end_date).to eq Date('31.05.2016')
+      expect(year.start_date).to eq Date('01.06.2015')
+      expect(year.end_date).to eq Date('31.05.2016')
     end
   end
 
   describe "#next" do
-    it "returns next month" do
+    it "returns next year" do
       expect(described_class.for('25.06.2015').next).to eq described_class.for('01.06.2016')
       expect(described_class.for('01.07.2015').next).to eq described_class.for('01.07.2016')
     end
   end
 
   describe "#previous" do
-    it "returns previous month" do
+    it "returns previous year" do
       expect(described_class.for('25.06.2015').previous).to eq described_class.for('01.06.2014')
       expect(described_class.for('01.06.2015').previous).to eq described_class.for('01.06.2014')
-    end
-  end
-
-  describe "#year" do
-    it "returns year number" do
-      expect(described_class.for('01.01.2015').year).to eq 2015
-      expect(described_class.for('01.12.2015').year).to eq 2015
-      expect(described_class.for('01.01.2014').year).to eq 2014
     end
   end
 

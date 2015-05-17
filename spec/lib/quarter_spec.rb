@@ -101,17 +101,4 @@ describe Quarter do
     end
   end
 
-  describe "#start_year" do
-    it "returns start year of quarter" do
-      expect(described_class.for('01.06.2015').start_year).to eq 2015
-      expect(described_class.for('01.06.2016').start_year).to eq 2016
-    end
-  end
-
-  describe "#end_year" do
-    it "returns end year of quarter" do
-      expect(described_class.for('01.06.2015').end_year).to eq 2015
-      expect(described_class.for('01.12.2015').end_year).to eq 2016
-    end
-  end
 end

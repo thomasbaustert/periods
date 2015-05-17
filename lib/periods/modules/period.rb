@@ -120,6 +120,36 @@ module Periods
         end
 
         ##
+        # Returns start year of period.
+        #
+        # @return [Fixnum] start year of period.
+        #
+        # @since 0.0.3
+        #
+        # @example
+        #
+        #    Period.new('10.04.2015', '20.05.2016').start_year # => 2015
+        #
+        def start_year
+          start_date.year
+        end
+
+        ##
+        # Returns end year of period.
+        #
+        # @return [Fixnum] end year of period.
+        #
+        # @since 0.0.3
+        #
+        # @example
+        #
+        #    Period.new('10.04.2015', '20.05.2016').end_year # => 2016
+        #
+        def end_year
+          end_date.year
+        end
+
+        ##
         # Test whether the given date or period is included in this one.
         #
         # @return [Boolean] true if date or period is included, false otherwise.

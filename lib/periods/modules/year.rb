@@ -47,10 +47,6 @@ module Periods
           (self.next.start_date - start_date).to_i
         end
 
-        def year
-          start_date.year
-        end
-
         def months
           months = [Periods::Month.for(start_date)]
           1.upto(11) do |idx|
