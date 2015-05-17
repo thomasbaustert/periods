@@ -52,6 +52,16 @@ All period models respond to the following interface:
 
 Special period models may define additional methods (see below).
 
+#### start_year
+
+    period = Period.new('25.06.2015', '19.08.2016')
+    period.start_year # => 2015
+ 
+#### end_year 
+
+    period = Period.new('25.06.2015', '19.08.2016')
+    period.end_year # => 2016
+
 #### days
 
     period = Period.new('25.06.2015', '19.08.2015')
@@ -114,8 +124,6 @@ A Quarter starts at first day of a month and ends at last day three months later
     quarter.previous # => 01.11.2014 - 31.01.2015
     
     quarter = Quarter.for('01.12.2015') # => 01.12.2015 - 29.02.2016
-    quarter.start_year # => 2015
-    quarter.end_year   # => 2016
     quarter.months     # => [Month.for('01.12.2015'), Month.for('01.01.2016'), Month.for('01.02.2016')]
 
 ### HalfyearlyPeriod
