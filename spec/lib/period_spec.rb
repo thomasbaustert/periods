@@ -7,6 +7,22 @@ describe Period do
     described_class.new(start_date, end_date)
   end
 
+  describe ".new" do
+    it "accepts Date" do
+      period = described_class.new(Date.new(2015,6,25), Date.new(2016,5,20))
+
+      expect(period.start_date).to eq Date('25.06.2015')
+      expect(period.end_date).to eq Date('20.05.2016')
+    end
+
+    it "accepts String" do
+      period = described_class.new('25.06.2015', '20.05.2016')
+
+      expect(period.start_date).to eq Date('25.06.2015')
+      expect(period.end_date).to eq Date('20.05.2016')
+    end
+  end
+
   describe "==" do
     context "same period given" do
       it "returns true" do
