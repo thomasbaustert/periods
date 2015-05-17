@@ -107,6 +107,7 @@ If you need a calendar month starting at first day of month and ending at last d
     june.next     # => 01.07.2015 - 31.07.2015
     june.previous # => 01.05.2015 - 31.05.2015
     june.month    # => 6
+    june.number   # => 6 (alias for month)
     june.year     # => 2015
 
 ### QuarterlyPeriod
