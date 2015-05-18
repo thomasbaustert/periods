@@ -1,6 +1,7 @@
 require 'periods/classes'
 
 Period = Periods::Period
+NullPeriod = Periods::NullPeriod
 
 Month = Periods::Month
 MonthlyPeriod = Periods::MonthlyPeriod

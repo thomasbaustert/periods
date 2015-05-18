@@ -1,4 +1,5 @@
 require 'periods/period'
+require 'periods/null_period'
 require 'periods/month'
 require 'periods/monthly_period'
 require 'periods/quarter'
