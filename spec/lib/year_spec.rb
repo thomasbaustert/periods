@@ -46,4 +46,13 @@ describe Year do
                   Quarter.for('01.12.2015'), Quarter.for('01.03.2016')]
     end
   end
+
+  describe "#halfyears" do
+    it "returns halfyears of year" do
+      expect(described_class.for('01.01.2015').halfyears).
+          to eq [ Halfyear.for('01.01.2015'), Halfyear.for('01.07.2015')]
+      expect(described_class.for('01.06.2015').halfyears).
+          to eq [ Halfyear.for('01.06.2015'), Halfyear.for('01.12.2015')]
+    end
+  end
 end

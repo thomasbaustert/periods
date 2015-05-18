@@ -47,6 +47,10 @@ module Periods
           quarters
         end
 
+        def halfyears
+          [Periods::Halfyear.for(start_date), Periods::Halfyear.for(start_date.next_month(6))]
+        end
+
         private
           def init_with_date(date)
             init_with_dates(
