@@ -8,11 +8,39 @@ describe QuarterlyPeriod do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    it "returns quarter of given date included" do
-      period = described_class.for('25.06.2015')
+    context "Date given" do
+      it "returns quarter of given date included" do
+        period = described_class.for(Date.new(2015,6,25))
 
-      expect(period.start_date).to eq Date('25.06.2015')
-      expect(period.end_date).to eq Date('24.09.2015')
+        expect(period.start_date).to eq Date('25.06.2015')
+        expect(period.end_date).to eq Date('24.09.2015')
+      end
+    end
+
+    context "String given" do
+      it "returns quarter of given date included" do
+        period = described_class.for('25.06.2015')
+
+        expect(period.start_date).to eq Date('25.06.2015')
+        expect(period.end_date).to eq Date('24.09.2015')
+      end
+    end
+
+    context "QuarterlyPeriod given" do
+      it "returns quarter of given date included" do
+        period = described_class.for(described_class.for('25.06.2015'))
+
+        expect(period.start_date).to eq Date('25.06.2015')
+        expect(period.end_date).to eq Date('24.09.2015')
+      end
+    end
+
+    context "Period given" do
+      it "raise exception" do
+        expect {
+          described_class.for(Period.new('25.06.2015', '24.07.2015'))
+        }.to raise_error(ArgumentError)
+      end
     end
   end
 
