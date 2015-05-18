@@ -22,9 +22,19 @@ module Periods
       module InstanceMethods
 
         def initialize(date)
-          date = Date.parse(date.to_s)
-          @start_date = beginning_of_month(date)
-          @end_date   = end_of_month(date)
+          if date.is_a?(Month)
+            @start_date = date.start_date
+            @end_date   = date.end_date
+          elsif date.is_a?(Date)
+            @start_date = beginning_of_month(date)
+            @end_date   = end_of_month(date)
+          elsif date.is_a?(String)
+            date = Date.parse(date.to_s)
+            @start_date = beginning_of_month(date)
+            @end_date   = end_of_month(date)
+          else
+            raise ArgumentError, "#{self.class} cannot be initialized with #{date.class}"
+          end
         end
 
         def month
