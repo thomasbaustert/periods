@@ -8,7 +8,7 @@ describe Month do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    context "accepts Date" do
+    context "Date given" do
       it "returns month of given date included" do
         month = described_class.for(Date.new(2015,6,25))
 
@@ -17,7 +17,7 @@ describe Month do
       end
     end
 
-    context "accepts String" do
+    context "String given" do
       it "returns month of given date included" do
         month = described_class.for('25.06.2015')
 
@@ -26,7 +26,7 @@ describe Month do
       end
     end
 
-    context "accepts Month" do
+    context "Month given" do
       it "returns month of given date included" do
         period = described_class.for(described_class.for('25.06.2015'))
 
@@ -35,8 +35,8 @@ describe Month do
       end
     end
 
-    context "does not accept Period" do
-      it "returns month of given date included" do
+    context "Period given" do
+      it "raise exception" do
         expect {
           described_class.for(Period.new('25.06.2015', '24.07.2015'))
         }.to raise_error(ArgumentError)
