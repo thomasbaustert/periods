@@ -13,16 +13,34 @@ module Periods
       end
 
       module ClassMethods
-        ##
-        # '25.06.2015' => 25.06.2015 - '24.07.2015'
-        #
         def for(date)
-          date = Date.parse(date.to_s)
-          new(date, date.next_month.prev_day)
+          new(date)
         end
       end
 
       module InstanceMethods
+        ##
+        # Initialize a new monthly period based on given date.
+        #
+        # @example
+        #
+        #    period = MonthlyPeriod.new(Date.new(2015,6,25))
+        #    period = MonthlyPeriod.new('25.06.2015')
+        #    period = MonthlyPeriod.new(MonthlyPeriod.for('25.06.2015')
+        #
+        def initialize(date)
+          if date.is_a?(MonthlyPeriod)
+            super(date.start_date, date.end_date)
+          elsif date.is_a?(Date)
+            super(date, date.next_month.prev_day)
+          elsif date.is_a?(String)
+            date = Date.parse(date.to_s)
+            super(date, date.next_month.prev_day)
+          else
+            raise ArgumentError, "#{self.class} cannot be initialized with #{date.class}"
+          end
+        end
+
         ##
         # 25.06.2015 => 25.07.2015
         #

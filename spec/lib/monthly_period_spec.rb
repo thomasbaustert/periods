@@ -8,11 +8,39 @@ describe MonthlyPeriod do
   it_behaves_like "Lint Check"
 
   describe ".for" do
-    it "returns month of given date included" do
-      month = described_class.for('25.06.2015')
+    context "accepts Date" do
+      it "returns month of given date included" do
+        month = described_class.for(Date.new(2015,6,25))
 
-      expect(month.start_date).to eq Date('25.06.2015')
-      expect(month.end_date).to eq Date('24.07.2015')
+        expect(month.start_date).to eq Date('25.06.2015')
+        expect(month.end_date).to eq Date('24.07.2015')
+      end
+    end
+
+    context "accepts String" do
+      it "returns month of given date included" do
+        month = described_class.for('25.06.2015')
+
+        expect(month.start_date).to eq Date('25.06.2015')
+        expect(month.end_date).to eq Date('24.07.2015')
+      end
+    end
+
+    context "accepts MonthlyPeriod" do
+      it "returns month of given date included" do
+        period = described_class.for(described_class.for('25.06.2015'))
+
+        expect(period.start_date).to eq Date('25.06.2015')
+        expect(period.end_date).to eq Date('24.07.2015')
+      end
+    end
+
+    context "does not accept Period" do
+      it "returns month of given date included" do
+        expect {
+          described_class.for(Period.new('25.06.2015', '24.07.2015'))
+        }.to raise_error(ArgumentError)
+      end
     end
   end
 
