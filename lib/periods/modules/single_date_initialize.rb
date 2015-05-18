@@ -32,6 +32,8 @@ module Periods
             init_with_date(date)
           elsif date.is_a?(String)
             init_with_date(Date.parse(date.to_s))
+          elsif date.is_a?(Time)
+            init_with_date(Date.parse(date.to_s))
           else
             raise ArgumentError, "#{self.class} cannot be initialized with #{date.class}"
           end

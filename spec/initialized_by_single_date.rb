@@ -8,6 +8,12 @@ shared_examples "Initialized by single date" do
       end
     end
 
+    context "Time given" do
+      it "returns period based on given date" do
+        expect(described_class.for(Time.new(2015,6,25,12,13,14))).to eq period
+      end
+    end
+
     context "String given" do
       it "returns period based on given date" do
         expect(described_class.for('25.06.2015')).to eq period
