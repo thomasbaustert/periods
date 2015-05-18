@@ -1,4 +1,5 @@
 require 'periods/modules/period'
+require 'periods/modules/single_date_initialize'
 
 module Periods
   module Modules
@@ -7,18 +8,8 @@ module Periods
       def self.included(base)
         base.class_eval do
           include Periods::Modules::Period
+          include SingleDateInitialize
           include InstanceMethods
-          extend ClassMethods
-        end
-      end
-
-      module ClassMethods
-        ##
-        # '25.06.2015' => 25.06.2015 - '24.06.2016'
-        #
-        def for(date)
-          date = Date.parse(date.to_s)
-          new(date, date.next_year.prev_day)
         end
       end
 
@@ -40,6 +31,11 @@ module Periods
         def days
           (self.next.start_date - start_date).to_i
         end
+
+        private
+          def init_with_date(date)
+            init_with_dates(date, date.next_year.prev_day)
+          end
 
       end
     end

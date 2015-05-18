@@ -1,47 +1,14 @@
 require 'spec_helper'
 require 'periods/constants'
+require 'initialized_by_single_date'
 
 describe Month do
 
   let(:subject) { described_class.for("1.1.2015") }
 
   it_behaves_like "Lint Check"
-
-  describe ".for" do
-    context "Date given" do
-      it "returns month of given date included" do
-        month = described_class.for(Date.new(2015,6,25))
-
-        expect(month.start_date).to eq Date('01.06.2015')
-        expect(month.end_date).to eq Date('30.06.2015')
-      end
-    end
-
-    context "String given" do
-      it "returns month of given date included" do
-        month = described_class.for('25.06.2015')
-
-        expect(month.start_date).to eq Date('01.06.2015')
-        expect(month.end_date).to eq Date('30.06.2015')
-      end
-    end
-
-    context "Month given" do
-      it "returns month of given date included" do
-        period = described_class.for(described_class.for('25.06.2015'))
-
-        expect(period.start_date).to eq Date('01.06.2015')
-        expect(period.end_date).to eq Date('30.06.2015')
-      end
-    end
-
-    context "Period given" do
-      it "raise exception" do
-        expect {
-          described_class.for(Period.new('25.06.2015', '24.07.2015'))
-        }.to raise_error(ArgumentError)
-      end
-    end
+  it_behaves_like "Initialized by single date" do
+    let(:period) { described_class.for(Date.new(2015,6,25)) }
   end
 
   describe "#next" do

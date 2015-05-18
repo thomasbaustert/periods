@@ -1,19 +1,14 @@
 require 'spec_helper'
 require 'periods/constants'
+require 'initialized_by_single_date'
 
 describe Year do
 
   let(:subject) { described_class.for("1.1.2015") }
 
   it_behaves_like "Lint Check"
-
-  describe ".for" do
-    it "returns year of given date included" do
-      year = described_class.for('25.06.2015')
-
-      expect(year.start_date).to eq Date('01.06.2015')
-      expect(year.end_date).to eq Date('31.05.2016')
-    end
+  it_behaves_like "Initialized by single date" do
+    let(:period) { described_class.for(Date.new(2015,6,25)) }
   end
 
   describe "#next" do

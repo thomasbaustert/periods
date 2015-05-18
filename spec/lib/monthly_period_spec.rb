@@ -1,11 +1,15 @@
 require 'spec_helper'
 require 'periods/constants'
+require 'initialized_by_single_date'
 
 describe MonthlyPeriod do
 
   let(:subject) { described_class.for("1.1.2015") }
 
   it_behaves_like "Lint Check"
+  it_behaves_like "Initialized by single date" do
+    let(:period) { described_class.for(Date.new(2015,6,25)) }
+  end
 
   describe ".for" do
     context "Date given" do

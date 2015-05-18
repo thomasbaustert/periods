@@ -1,19 +1,14 @@
 require 'spec_helper'
 require 'periods/constants'
+require 'initialized_by_single_date'
 
 describe HalfyearlyPeriod do
 
   let(:subject) { described_class.for("1.1.2015") }
 
   it_behaves_like "Lint Check"
-
-  describe ".for" do
-    it "returns halfyear of given date included" do
-      period = described_class.for('25.06.2015')
-
-      expect(period.start_date).to eq Date('25.06.2015')
-      expect(period.end_date).to eq Date('24.12.2015')
-    end
+  it_behaves_like "Initialized by single date" do
+    let(:period) { described_class.for(Date.new(2015,6,25)) }
   end
 
   describe "#next" do

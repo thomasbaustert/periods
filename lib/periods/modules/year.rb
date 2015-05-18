@@ -9,26 +9,10 @@ module Periods
         base.class_eval do
           include Periods::Modules::YearlyPeriod
           include InstanceMethods
-          extend ClassMethods
-        end
-      end
-
-      module ClassMethods
-        ##
-        # '25.06.2015' => 01.06.2015 - '30.05.2016'
-        #
-        def for(date)
-          new(date)
         end
       end
 
       module InstanceMethods
-
-        def initialize(date)
-          date = Date.parse(date.to_s)
-          super(beginning_of_month(date), end_of_month(beginning_of_month(date).next_year.prev_day))
-        end
-
         ##
         # 01.06.2015 => 01.06.2016
         #
@@ -56,6 +40,10 @@ module Periods
         end
 
         private
+          def init_with_date(date)
+            init_with_dates(
+                beginning_of_month(date), end_of_month(beginning_of_month(date).next_year.prev_day))
+          end
 
           def beginning_of_month(date)
             Periods::DateCalculator.new(date).beginning_of_month

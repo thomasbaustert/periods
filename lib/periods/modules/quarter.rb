@@ -8,26 +8,12 @@ module Periods
 
       def self.included(base)
         base.class_eval do
-          include Periods::Modules::Period
           include Periods::Modules::QuarterlyPeriod
           include InstanceMethods
-          extend ClassMethods
-        end
-      end
-
-      module ClassMethods
-        def for(date)
-          new(date)
         end
       end
 
       module InstanceMethods
-
-        def initialize(date)
-          date = Date.parse(date.to_s)
-          @start_date = beginning_of_month(date)
-          @end_date   = end_of_month(@start_date.next_month(2))
-        end
 
         def months
           [ Periods::Month.for(start_date),
@@ -36,6 +22,9 @@ module Periods
         end
 
         private
+          def init_with_date(date)
+            init_with_dates(beginning_of_month(date), end_of_month(date.next_month(2)))
+          end
 
           def beginning_of_month(date)
             Periods::DateCalculator.new(date).beginning_of_month

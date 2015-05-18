@@ -9,33 +9,10 @@ module Periods
         base.class_eval do
           include Periods::Modules::MonthlyPeriod
           include InstanceMethods
-          extend ClassMethods
-        end
-      end
-
-      module ClassMethods
-        def for(date)
-          new(date)
         end
       end
 
       module InstanceMethods
-
-        def initialize(date)
-          if date.is_a?(Month)
-            @start_date = date.start_date
-            @end_date   = date.end_date
-          elsif date.is_a?(Date)
-            @start_date = beginning_of_month(date)
-            @end_date   = end_of_month(date)
-          elsif date.is_a?(String)
-            date = Date.parse(date.to_s)
-            @start_date = beginning_of_month(date)
-            @end_date   = end_of_month(date)
-          else
-            raise ArgumentError, "#{self.class} cannot be initialized with #{date.class}"
-          end
-        end
 
         def month
           start_date.month
@@ -56,6 +33,10 @@ module Periods
         end
 
         private
+
+          def init_with_date(date)
+            init_with_dates(beginning_of_month(date), end_of_month(date))
+          end
 
           def beginning_of_month(date)
             Periods::DateCalculator.new(date).beginning_of_month
