@@ -21,6 +21,10 @@ module Periods
           months
         end
 
+        def quarters
+          [Periods::Quarter.for(start_date), Periods::Quarter.for(start_date.next_month(3))]
+        end
+
         private
           def init_with_date(date)
             init_with_dates(
