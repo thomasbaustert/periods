@@ -164,6 +164,7 @@ A year starts at first day of a month and ends one year later:
     year.next       # => 01.02.2016 - 31.01.2017
     year.previous   # => 01.02.2014 - 31.01.2015
     year.months     # => [Month.for('01.02.2015'), ..., Month.for('01.01.2016')]
+    year.quarters   # => [Quarter.for('01.02.2015'), ..., Quarter.for('01.11.2015')]
     
 ### If constants already exist
 
@@ -197,6 +198,7 @@ Write your own classes:
 * Use Time not Date
 * Optimize README
 * Comment Code
+* Provide helper methods Month('25.06.2015'), Quarter(), ...
 
 ## Contributing
 

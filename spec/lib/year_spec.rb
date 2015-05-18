@@ -35,4 +35,15 @@ describe Year do
                 ]
     end
   end
+
+  describe "#quarters" do
+    it "returns quarters of year" do
+      expect(described_class.for('01.01.2015').quarters).
+          to eq [ Quarter.for('01.01.2015'), Quarter.for('01.04.2015'),
+                  Quarter.for('01.07.2015'), Quarter.for('01.10.2015')]
+      expect(described_class.for('01.06.2015').quarters).
+          to eq [ Quarter.for('01.06.2015'), Quarter.for('01.09.2015'),
+                  Quarter.for('01.12.2015'), Quarter.for('01.03.2016')]
+    end
+  end
 end
