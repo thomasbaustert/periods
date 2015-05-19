@@ -25,10 +25,10 @@ module Periods
         end
 
         def to_s(*args)
-          if args.first.to_s == 'date'
-            "#{start_date.strftime("%m.%Y")} (#{start_date.strftime("%d.%m.%Y")} - #{end_date.strftime("%d.%m.%Y")})"
-          else
+          if args.first.to_s == 'month'
             "#{start_date.strftime("%m.%Y")}"
+          else
+            super
           end
         end
 

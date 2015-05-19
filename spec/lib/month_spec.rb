@@ -50,4 +50,20 @@ describe Month do
       expect(described_class.for('01.01.2014').year).to eq 2014
     end
   end
+
+  describe "#to_s" do
+    context "nothing passed" do
+      it "returns period" do
+        expect(described_class.for('01.03.2015').to_s).to eq "01.03.2015 - 31.03.2015"
+        expect(described_class.for('01.06.2015').to_s).to eq "01.06.2015 - 30.06.2015"
+      end
+    end
+
+    context ":month passed" do
+      it "returns month.year" do
+        expect(described_class.for('01.01.2015').to_s(:month)).to eq "01.2015"
+        expect(described_class.for('01.06.2015').to_s(:month)).to eq "06.2015"
+      end
+    end
+  end
 end
