@@ -6,8 +6,6 @@ describe January do
 
   let(:subject) { January.of(2015) }
 
-  it_behaves_like "Lint Check"
-
   describe ".of" do
     it "returns January of given year" do
       expect(described_class.of(2014)).to eq Month.for('01.01.2014')
