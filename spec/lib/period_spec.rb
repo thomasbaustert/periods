@@ -142,6 +142,13 @@ describe Period do
       end
     end
   end
+
+  describe "#to_s" do
+    it "returns period" do
+      expect(new_period("09.04.2015", "20.05.2015").to_s).to eq "09.04.2015 - 20.05.2015"
+      expect(new_period("26.06.2014", "10.09.2015").to_s).to eq "26.06.2014 - 10.09.2015"
+    end
+  end
 end
 
 
