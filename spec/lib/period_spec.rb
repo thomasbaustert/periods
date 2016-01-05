@@ -7,6 +7,16 @@ describe Period do
     described_class.new(start_date, end_date)
   end
 
+  def new_months(start_date, count)
+    months = [Periods::Month.for(start_date)]
+    month  = months.first.next
+    2.upto(count) do |idx|
+      months << month
+      month = month.next
+    end
+    months
+  end
+
   describe ".new" do
     it "accepts Date" do
       period = described_class.new(Date.new(2015,6,25), Date.new(2016,5,20))
@@ -147,6 +157,14 @@ describe Period do
     it "returns period" do
       expect(new_period("09.04.2015", "20.05.2015").to_s).to eq "09.04.2015 - 20.05.2015"
       expect(new_period("26.06.2014", "10.09.2015").to_s).to eq "26.06.2014 - 10.09.2015"
+    end
+  end
+
+  describe "months" do
+    it "returns months included period" do
+      expect(new_period("01.01.2015", "31.12.2015").months).to eq new_months("01.01.2015", 12)
+      expect(new_period("17.04.2015", "26.08.2015").months).to eq new_months("01.04.2015",  5)
+      expect(new_period("01.01.2015", "31.05.2016").months).to eq new_months("01.01.2015", 17)
     end
   end
 end

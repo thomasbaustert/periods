@@ -205,6 +205,29 @@ module Periods
           "#{start_date.strftime("%d.%m.%Y")} - #{end_date.strftime("%d.%m.%Y")}"
         end
 
+        ##
+        # Returns the months included in this period including the month of the start and end date
+        # of this period.
+        #
+        # @return [Month] an array of months included in this period.
+        #
+        # @since 0.0.7
+        #
+        # @example
+        #
+        #    Period.new('01.01.2015', '31.12.2015').months # => Jan, Feb, ..., Dec
+        #    Period.new('17.04.2015', '26.08.2015').months # => Apr, Mai, Jun, Jul, Aug
+        #
+        def months
+          months = [Periods::Month.for(start_date)]
+          month  = months.first.next
+          while month <= Periods::Month.for(end_date)
+            months << month
+            month = month.next
+          end
+          months
+        end
+
       end
     end
   end
