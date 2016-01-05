@@ -205,6 +205,16 @@ describe Period do
       expect(new_period("01.01.2015", "20.07.2016").halfyears).to eq new_halfyears("01.01.2015", 3)
     end
   end
+
+  describe "#years" do
+    it "returns years included period" do
+      expect(new_period("01.01.2015", "31.12.2015").years).to eq [Periods::Year.for("01.01.2015")]
+      expect(new_period("17.04.2015", "26.08.2015").years).to eq []
+      expect(new_period("01.01.2015", "31.05.2016").years).to eq [Periods::Year.for("01.01.2015")]
+      expect(new_period("01.01.2015", "30.06.2016").years).to eq [Periods::Year.for("01.01.2015")]
+      expect(new_period("01.01.2015", "31.12.2016").years).to eq [Periods::Year.for("01.01.2015"), Periods::Year.for("01.01.2016")]
+    end
+  end
 end
 
 

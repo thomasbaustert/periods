@@ -277,6 +277,32 @@ module Periods
           end
           halfyears
         end
+
+        ##
+        # Returns the years included in this period including the year of the start date
+        # of this period. The year of the end date of this period is only included if the
+        # year's end date is before/equal the end date of this period.
+        #
+        # @return [Year] an array of halfyears included in this period.
+        #
+        # @since 0.0.7
+        #
+        # @example
+        #
+        #    Period.new('01.01.2015', '31.12.2015').halfyears # => [(Jan-Dec)]
+        #    Period.new('17.04.2015', '26.08.2015').halfyears # => []
+        #    Period.new('01.01.2015', '31.05.2016').halfyears # => [(Jan-Dec)]
+        #    Period.new('01.01.2015', '31.12.2016').halfyears # => [(Jan-Dec),(Jan-Dec)]
+        #
+        def years
+          years = []
+          year  = Periods::Year.for(start_date)
+          while year.end_date <= end_date
+            years << year
+            year = year.next
+          end
+          years
+        end
       end
     end
   end
