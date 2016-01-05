@@ -239,8 +239,8 @@ module Periods
         #
         # @example
         #
-        #    Period.new('01.01.2015', '31.12.2015').quarters # => (J,F,M),(A,M,J),(J,A,S),(O,N,D)
-        #    Period.new('17.04.2015', '26.08.2015').quarters # => (A,M,J) but not (J,A,S)
+        #    Period.new('01.01.2015', '31.12.2015').quarters # => [(J,F,M),(A,M,J),(J,A,S),(O,N,D)]
+        #    Period.new('17.04.2015', '26.08.2015').quarters # => [(A,M,J) but not (J,A,S)]
         #
         def quarters
           quarters = [Periods::Quarter.for(start_date)]
@@ -263,10 +263,10 @@ module Periods
         #
         # @example
         #
-        #    Period.new('01.01.2015', '31.12.2015').halfyears # => (Jan-Jun),(Jul-Dec)
+        #    Period.new('01.01.2015', '31.12.2015').halfyears # => [(Jan-Jun),(Jul-Dec)]
         #    Period.new('17.04.2015', '26.08.2015').halfyears # => []
-        #    Period.new('01.01.2015', '31.05.2016').halfyears # => (Jan-Jun),(Jul-Dec)
-        #    Period.new('01.01.2015', '30.06.2016').halfyears # => (Jan-Jun),(Jul-Dec),(Jan-Jun)
+        #    Period.new('01.01.2015', '31.05.2016').halfyears # => [(Jan-Jun),(Jul-Dec)]
+        #    Period.new('01.01.2015', '30.06.2016').halfyears # => [(Jan-Jun),(Jul-Dec),(Jan-Jun)]
         #
         def halfyears
           halfyears = []
