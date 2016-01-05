@@ -17,6 +17,16 @@ describe Period do
     months
   end
 
+  def new_quarters(start_date, count)
+    quarters = [Periods::Quarter.for(start_date)]
+    quarter  = quarters.first.next
+    2.upto(count) do |idx|
+      quarters << quarter
+      quarter = quarter.next
+    end
+    quarters
+  end
+
   describe ".new" do
     it "accepts Date" do
       period = described_class.new(Date.new(2015,6,25), Date.new(2016,5,20))
@@ -165,6 +175,14 @@ describe Period do
       expect(new_period("01.01.2015", "31.12.2015").months).to eq new_months("01.01.2015", 12)
       expect(new_period("17.04.2015", "26.08.2015").months).to eq new_months("01.04.2015",  5)
       expect(new_period("01.01.2015", "31.05.2016").months).to eq new_months("01.01.2015", 17)
+    end
+  end
+
+  describe "quarters" do
+    it "returns quarters included period" do
+      expect(new_period("01.01.2015", "31.12.2015").quarters).to eq new_quarters("01.01.2015", 4)
+      expect(new_period("17.04.2015", "26.08.2015").quarters).to eq new_quarters("01.04.2015", 1)
+      expect(new_period("01.01.2015", "31.05.2016").quarters).to eq new_quarters("01.01.2015", 5)
     end
   end
 end

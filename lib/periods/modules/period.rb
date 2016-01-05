@@ -228,6 +228,29 @@ module Periods
           months
         end
 
+        ##
+        # Returns the quarters included in this period including the quarter of the start date
+        # of this period. The quarter of the end date of this period is only included if the
+        # quarter's end date is before/equal the end date of this period.
+        #
+        # @return [Quarter] an array of quarters included in this period.
+        #
+        # @since 0.0.7
+        #
+        # @example
+        #
+        #    Period.new('01.01.2015', '31.12.2015').quarters # => (J,F,M),(A,M,J),(J,A,S),(O,N,D)
+        #    Period.new('17.04.2015', '26.08.2015').quarters # => (A,M,J) but not (J,A,S)
+        #
+        def quarters
+          quarters = [Periods::Quarter.for(start_date)]
+          quarter  = quarters.first.next
+          while quarter.end_date <= end_date
+            quarters << quarter
+            quarter = quarter.next
+          end
+          quarters
+        end
       end
     end
   end
