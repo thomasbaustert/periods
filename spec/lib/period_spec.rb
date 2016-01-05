@@ -27,6 +27,16 @@ describe Period do
     quarters
   end
 
+  def new_halfyears(start_date, count)
+    halfyears = [Periods::Halfyear.for(start_date)]
+    halfyear  = halfyears.first.next
+    2.upto(count) do |idx|
+      halfyears << halfyear
+      halfyear = halfyear.next
+    end
+    halfyears
+  end
+
   describe ".new" do
     it "accepts Date" do
       period = described_class.new(Date.new(2015,6,25), Date.new(2016,5,20))
@@ -170,7 +180,7 @@ describe Period do
     end
   end
 
-  describe "months" do
+  describe "#months" do
     it "returns months included period" do
       expect(new_period("01.01.2015", "31.12.2015").months).to eq new_months("01.01.2015", 12)
       expect(new_period("17.04.2015", "26.08.2015").months).to eq new_months("01.04.2015",  5)
@@ -178,11 +188,21 @@ describe Period do
     end
   end
 
-  describe "quarters" do
+  describe "#quarters" do
     it "returns quarters included period" do
       expect(new_period("01.01.2015", "31.12.2015").quarters).to eq new_quarters("01.01.2015", 4)
       expect(new_period("17.04.2015", "26.08.2015").quarters).to eq new_quarters("01.04.2015", 1)
       expect(new_period("01.01.2015", "31.05.2016").quarters).to eq new_quarters("01.01.2015", 5)
+    end
+  end
+
+  describe "#halfyears" do
+    it "returns halfyears included period" do
+      expect(new_period("01.01.2015", "31.12.2015").halfyears).to eq new_halfyears("01.01.2015", 2)
+      expect(new_period("17.04.2015", "26.08.2015").halfyears).to eq []
+      expect(new_period("01.01.2015", "31.05.2016").halfyears).to eq new_halfyears("01.01.2015", 2)
+      expect(new_period("01.01.2015", "30.06.2016").halfyears).to eq new_halfyears("01.01.2015", 3)
+      expect(new_period("01.01.2015", "20.07.2016").halfyears).to eq new_halfyears("01.01.2015", 3)
     end
   end
 end
