@@ -11,6 +11,7 @@ module Periods
           include Periods::Modules::Period
           include SingleDateInitialize
           include InstanceMethods
+          alias_method :succ, :next
         end
       end
 
