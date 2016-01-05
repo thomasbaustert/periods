@@ -219,13 +219,7 @@ module Periods
         #    Period.new('17.04.2015', '26.08.2015').months # => Apr, Mai, Jun, Jul, Aug
         #
         def months
-          months = [Periods::Month.for(start_date)]
-          month  = months.first.next
-          while month <= Periods::Month.for(end_date)
-            months << month
-            month = month.next
-          end
-          months
+          (Periods::Month.for(start_date)..Periods::Month.for(end_date)).to_a
         end
 
         ##
