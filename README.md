@@ -111,7 +111,7 @@ If you need a constant monthly range use `MonthlyPeriod`:
 
 If you need a calendar month starting at first day of month and ending at last day of month use `Month`:
 
-    june = MonthPeriod.for('25.06.2015') # => 01.06.2015 - 30.06.2015
+    june = Month.for('25.06.2015') # => 01.06.2015 - 30.06.2015
     june.next     # => 01.07.2015 - 31.07.2015
     june.previous # => 01.05.2015 - 31.05.2015
     june.month    # => 6
