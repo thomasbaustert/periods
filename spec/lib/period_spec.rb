@@ -192,6 +192,7 @@ describe Period do
     it "returns quarters included period" do
       expect(new_period("01.01.2015", "31.12.2015").quarters).to eq new_quarters("01.01.2015", 4)
       expect(new_period("17.04.2015", "26.08.2015").quarters).to eq new_quarters("01.04.2015", 1)
+      expect(new_period("17.04.2015", "31.05.2015").quarters).to eq []
       expect(new_period("01.01.2015", "31.05.2016").quarters).to eq new_quarters("01.01.2015", 5)
     end
   end

@@ -243,8 +243,8 @@ module Periods
         #    Period.new('17.04.2015', '26.08.2015').quarters # => [(A,M,J) but not (J,A,S)]
         #
         def quarters
-          quarters = [Periods::Quarter.for(start_date)]
-          quarter  = quarters.first.next
+          quarters = []
+          quarter  = Periods::Quarter.for(start_date)
           while quarter.end_date <= end_date
             quarters << quarter
             quarter = quarter.next
