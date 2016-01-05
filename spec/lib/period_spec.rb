@@ -3,40 +3,6 @@ require 'periods/constants'
 
 describe Period do
 
-  def new_period(start_date, end_date)
-    described_class.new(start_date, end_date)
-  end
-
-  def new_months(start_date, count)
-    months = [Periods::Month.for(start_date)]
-    month  = months.first.next
-    2.upto(count) do |idx|
-      months << month
-      month = month.next
-    end
-    months
-  end
-
-  def new_quarters(start_date, count)
-    quarters = [Periods::Quarter.for(start_date)]
-    quarter  = quarters.first.next
-    2.upto(count) do |idx|
-      quarters << quarter
-      quarter = quarter.next
-    end
-    quarters
-  end
-
-  def new_halfyears(start_date, count)
-    halfyears = [Periods::Halfyear.for(start_date)]
-    halfyear  = halfyears.first.next
-    2.upto(count) do |idx|
-      halfyears << halfyear
-      halfyear = halfyear.next
-    end
-    halfyears
-  end
-
   describe ".new" do
     it "accepts Date" do
       period = described_class.new(Date.new(2015,6,25), Date.new(2016,5,20))

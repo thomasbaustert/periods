@@ -76,16 +76,6 @@ describe Month do
     end
   end
 
-  def new_months(start_date, count)
-    months = [Periods::Month.for(start_date)]
-    month  = months.first.next
-    2.upto(count) do |idx|
-      months << month
-      month = month.next
-    end
-    months
-  end
-
   def range_to_months(range)
     range.inject([]) { |months, month| months << month }
   end
