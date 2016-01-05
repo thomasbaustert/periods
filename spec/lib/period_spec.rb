@@ -185,6 +185,7 @@ describe Period do
       expect(new_period("01.01.2015", "31.12.2015").months).to eq new_months("01.01.2015", 12)
       expect(new_period("17.04.2015", "26.08.2015").months).to eq new_months("01.04.2015",  5)
       expect(new_period("01.01.2015", "31.05.2016").months).to eq new_months("01.01.2015", 17)
+      expect(new_period("08.02.2015", "09.02.2015").months).to eq new_months("01.02.2015",  1)
     end
   end
 
