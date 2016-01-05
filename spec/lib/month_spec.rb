@@ -68,16 +68,11 @@ describe Month do
 
   describe "Range" do
     it "works" do
-      expect(range_to_months(Month.for("01.01.2015")..Month.for("31.01.2015"))).to eq new_months("01.01.2015",  1)
-      expect(range_to_months(Month.for("01.01.2015")..Month.for("28.02.2015"))).to eq new_months("01.01.2015",  2)
-      expect(range_to_months(Month.for("01.01.2015")..Month.for("26.08.2015"))).to eq new_months("01.01.2015",  8)
-      expect(range_to_months(Month.for("01.01.2015")..Month.for("31.12.2015"))).to eq new_months("01.01.2015", 12)
-      expect(range_to_months(Month.for("01.01.2015")..Month.for("31.05.2016"))).to eq new_months("01.01.2015", 17)
+      expect((Month.for("01.01.2015")..Month.for("31.01.2015")).to_a).to eq new_months("01.01.2015",  1)
+      expect((Month.for("01.01.2015")..Month.for("28.02.2015")).to_a).to eq new_months("01.01.2015",  2)
+      expect((Month.for("01.01.2015")..Month.for("26.08.2015")).to_a).to eq new_months("01.01.2015",  8)
+      expect((Month.for("01.01.2015")..Month.for("31.12.2015")).to_a).to eq new_months("01.01.2015", 12)
+      expect((Month.for("01.01.2015")..Month.for("31.05.2016")).to_a).to eq new_months("01.01.2015", 17)
     end
   end
-
-  def range_to_months(range)
-    range.inject([]) { |months, month| months << month }
-  end
-
 end
