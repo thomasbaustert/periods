@@ -58,6 +58,16 @@ All period models respond to the following interface:
     * Comparable (==, >=, >, <=, <)
     * to_s
 
+The following parts support Ruby Range too:
+
+`MonthlyPeriod`, `QuarterlyPeriod`, `HalfyearlyPeriod`, `YearlyPeriod`, 
+`Month`, `Quarter`, `Halfyear` and `Year`.
+
+Example:
+
+    range = Month.for('01.01.2015')..Month.for('01.12.2015')
+    range.to_a # => 12 Months from Jan 2015 til Dec 2015
+    
 Special period models may define additional methods like `months` (see below).
 
 #### start_year
