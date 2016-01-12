@@ -9,7 +9,6 @@ module Periods
         base.class_eval do
           include Periods::Modules::MonthlyPeriod
           include InstanceMethods
-          alias_method :succ, :next
         end
       end
 
