@@ -63,4 +63,21 @@ describe MonthlyPeriod do
     end
   end
 
+  describe "#include?" do
+    context "week is included" do
+      it "returns true" do
+        expect(described_class.for('01.06.2015').include?(Week.for('01.06.2015'))).to be_truthy
+        expect(described_class.for('01.06.2015').include?(Week.for('02.06.2015'))).to be_truthy
+        expect(described_class.for('01.06.2015').include?(Week.for('07.06.2015'))).to be_truthy
+      end
+    end
+
+    context "week is not included" do
+      it "returns false" do
+        expect(described_class.for('01.06.2015').include?(Week.for('31.05.2015'))).to be_falsey
+        expect(described_class.for('01.06.2015').include?(Week.for('25.06.2015'))).to be_falsey
+      end
+    end
+  end
+
 end

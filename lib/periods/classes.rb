@@ -8,5 +8,6 @@ require 'periods/halfyear'
 require 'periods/halfyearly_period'
 require 'periods/year'
 require 'periods/yearly_period'
-
+require 'periods/week'
+require 'periods/weekly_period'
 

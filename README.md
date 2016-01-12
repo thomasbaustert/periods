@@ -109,6 +109,22 @@ Test whether a date or a period is included in the given period:
     period.include?(Period.new('24.06.2015', '19.08.2015')) # => false
     period.include?(Period.new('25.06.2015', '20.08.2015')) # => false
 
+### WeeklyPeriod
+
+If you need a constant weekly range use `WeeklyPeriod`:
+
+    weekly = WeeklyPeriod.for('25.06.2015') # => 25.06.2015 - 01.07.2015
+    weekly.next     # => 02.07.2015 - 08.07.2015
+    weekly.previous # => 18.06.2015 - 24.06.2015
+
+### Week
+
+Same as `WeeklyPeriod`:
+
+    week = Week.for('25.06.2015') # => 25.06.2015 - 01.07.2015
+    week.next     # => 02.07.2015 - 08.07.2015
+    week.previous # => 18.06.2015 - 24.06.2015
+
 ### MonthlyPeriod
 
 If you need a constant monthly range use `MonthlyPeriod`:
@@ -201,14 +217,6 @@ Write your own classes:
     end
     month = MyMonth.for('01.08.2015')
     ...
-
-## TODO
-
-* Implement Week
-* Use Time not Date
-* Optimize README
-* Comment Code
-* Provide helper methods Month('25.06.2015'), Quarter(), ...
 
 ## Contributing
 

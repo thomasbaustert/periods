@@ -15,3 +15,5 @@ HalfyearlyPeriod = Periods::HalfyearlyPeriod
 Year = Periods::Year
 YearlyPeriod = Periods::YearlyPeriod
 
+Week = Periods::Week
+WeeklyPeriod = Periods::WeeklyPeriod
