@@ -38,7 +38,6 @@ describe WeeklyPeriod do
 
     context "date included" do
       it "returns true" do
-        puts period
         expect(period.include?('25.06.2015')).to be_truthy
         expect(period.include?('01.07.2015')).to be_truthy
       end
