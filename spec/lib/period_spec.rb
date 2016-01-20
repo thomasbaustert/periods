@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'periods/constants'
+require 'ostruct'
 
 describe Period do
 
@@ -42,6 +43,12 @@ describe Period do
         expect(new_period("01.02.2015", "28.02.2015") == new_period("02.02.2015", "28.02.2015")).to be_falsey
         expect(new_period("01.02.2015", "28.02.2015") == new_period("01.02.2015", "27.02.2015")).to be_falsey
         expect(new_period("01.02.2015", "28.02.2015") == new_period("01.03.2015", "31.03.2015")).to be_falsey
+      end
+    end
+
+    context "object not responding to start and end date given" do
+      it "returns false" do
+        expect(new_period("01.02.2015", "28.02.2015") == Object).to be_falsey
       end
     end
   end

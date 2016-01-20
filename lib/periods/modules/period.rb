@@ -57,7 +57,11 @@ module Periods
         #    period1 == period3 # => false
         #
         def ==(period)
-          start_date == period.start_date && end_date == period.end_date
+          if period.respond_to?(:start_date) && period.respond_to?(:end_date)
+            start_date == period.start_date && end_date == period.end_date
+          else
+            false
+          end
         end
 
         ##
